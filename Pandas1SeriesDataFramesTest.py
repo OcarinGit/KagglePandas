@@ -28,3 +28,12 @@ with sqlite3.connect("datasets/database.sqlite") as con:
     sql = "SELECT * FROM artists"
     df = pd.read_sql(sql, con)
     print(df.shape)
+
+"""import sqlite3
+
+con = sqlite3.connect("../input/pitchfork-data/database.sqlite")
+sql = "SELECT * FROM artists"
+df = pd.read_sql(sql,con)
+
+music_reviews = df
+print(music_reviews)"""
