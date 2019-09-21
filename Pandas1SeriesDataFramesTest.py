@@ -20,3 +20,11 @@ ingredients = pd.Series(["4 cups","1 cup","2 large", "1 can"], index=["Flour","M
 
 reviews = pd.read_csv("datasets/winemag-data_first150k.csv", index_col=0)
 print(reviews.head())
+
+#Import a sqlite db
+import sqlite3
+
+with sqlite3.connect("datasets/database.sqlite") as con:
+    sql = "SELECT * FROM artists"
+    df = pd.read_sql(sql, con)
+    print(df.shape)
