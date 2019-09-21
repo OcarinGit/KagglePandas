@@ -59,3 +59,16 @@ db_connection_string='mysql+pymysql://root:root@localhost:3306/abarrotes'
 sql_engine = create_engine(db_connection_string)
 df = pd.read_sql("SELECT * FROM empleados", sql_engine)
 print(df)
+
+"""
+
+Writing common file formats
+
+Writing data to a file is usually easier than reading it out of one, because pandas handles the nuisance of conversions for you.
+
+We'll start with CSV files again. The opposite of read_csv, which reads our data, is to_csv, which writes it. With CSV files it's dead simple:
+"""
+wine_reviews.to_csv("datasets/prueba.csv")
+wic.to_excel("datasets/pruebaExcel.xls", sheet_name="PRUEBA WOMEN")
+df.to_sql("empleados2", sql_engine)
+
