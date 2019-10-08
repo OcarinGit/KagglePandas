@@ -37,7 +37,7 @@ miSeries = pd.Series([60,70,80], index=["Sales 2016","Sales 2017","Sales 2016"],
 print(miSeries)
 
 #Reading common file formats
-wine_reviews = pd.read_csv("datasets/winemag-data-130k-v2.csv")
+wine_reviews = pd.read_csv("../data/winemag-data-130k-v2.csv")
 
 #See how big is our dataset
 print(wine_reviews.shape)
@@ -46,7 +46,7 @@ print(wine_reviews.shape)
 print(wine_reviews.head())
 
 #Read and excel file
-wic = pd.read_excel("datasets/WICAgencies2013ytd.xls", sheetn_name="Total Women")
+wic = pd.read_excel("../data/WICAgencies2013ytd.xls", sheetn_name="Total Women")
 print(wic.shape)
 print(wic.head())
 
@@ -68,7 +68,7 @@ Writing data to a file is usually easier than reading it out of one, because pan
 
 We'll start with CSV files again. The opposite of read_csv, which reads our data, is to_csv, which writes it. With CSV files it's dead simple:
 """
-wine_reviews.to_csv("datasets/prueba.csv")
-wic.to_excel("datasets/pruebaExcel.xls", sheet_name="PRUEBA WOMEN")
+wine_reviews.to_csv("../data/prueba.csv")
+wic.to_excel("../data/pruebaExcel.xls", sheet_name="PRUEBA WOMEN")
 df.to_sql("empleados2", sql_engine)
 

@@ -6,10 +6,13 @@ Created on Fri Sep 20 20:11:49 2019
 """
 
 import pandas as pd
+import os
 
-reviews = pd.read_csv("datasets/winemag-data-130k-v2.csv", index_col=0)
+
+os.chdir("D:\Ocarin\Data Scientist\Python Practices\Kaggle\Pandas Course")
+reviews = pd.read_csv("../data/winemag-data-130k-v2.csv", index_col=0)
 print(reviews)
-pd.set_option("display.max_rows",5)
+pd.set_option("display.max_rows",10)
 print(reviews)
 
 """Selecting specific values of a pandas DataFrame or Series to work on is an implicit step in almost any data operation you'll run. Hence a solid understanding of how to slice and dice a dataset is vital.
@@ -120,7 +123,7 @@ Label-based selection derives its power from the labels in the index. Critically
 
 The set_index method can be used to do the job. Here is what happens when we set_index to the title field:
 """
-
+print(reviews)
 reviews.set_index("title")
 print(reviews)
 
@@ -135,12 +138,16 @@ For example, suppose that we're interested specifically in better-than-average w
 
 We can start by asking each wine if it's Italian or not:
 """
-#These two lines are the same
+#These three lines are the same
 print(reviews.country=="Italy")
 #And this
 print(reviews["country"]=="Italy")
+print(reviews.columns)
 #And this
 print(reviews.iloc[:,0]=="Italy")
+
+#Obtain the wines which points are 87
+print(reviews.iloc[:,3]==87)
 
 """This operation produced a Series of True/False booleans based on the country of each record. This result can then be used inside of loc to select the relevant data:
 """
@@ -152,6 +159,16 @@ We also wanted to know which ones are better than average. Wines are reviewed on
 
 We can use the ampersand (&) to bring the two questions together:
 """
+print(reviews.loc[(reviews.iloc[:,0]=="Italy") & (reviews.iloc[:,3]>=90)])
+#Esta instrucción no sirve y no sé por qué. Lo que estoy tratando de hacer
+#mostrar solamente los primeros 3 renglones de la lista de las condiciones
+#true y false arrojadas.
+print(reviews[1:100,reviews.loc[
+                    (reviews.iloc[:,0]=="Italy") & 
+                     (reviews.iloc[:,3]>=90)
+                     
+                ]
+    ])
 print(reviews.loc[(reviews.country=="Italy") & (reviews.points>=90)])
 
 """Suppose we'll buy any wine that's made in Italy or which is rated above average. For this we use a pipe (|):
